@@ -5,7 +5,7 @@ list_of_websites = []
 
 
 
-#UPDATE LISTS
+#UPDATE LISTS FROM TSV
 def update_lists():
    with open("website-list.tsv", "rU") as csvfile:
       reader = csv.reader(csvfile, dialect='excel-tab')
@@ -14,6 +14,7 @@ def update_lists():
 update_lists()
 
 
+#TEST WEBSITE ACCESS FROM TSV LIST
 def test_websites_from_list():
    for website in list_of_websites:
       returned_code = urllib.urlopen(website).getcode()
@@ -23,11 +24,13 @@ def test_websites_from_list():
          print "FAIL | %s" % (website)
          
 
+#DISPLAY ALL WEBSITES IN LIST
 def print_list_of_websites():
    for website in list_of_websites:
       print website
 
 
+#USER MENU
 def main():
    option = raw_input("\n1 - Test list of websites\n2 - Print list of websites\n>")
 
@@ -38,7 +41,6 @@ def main():
    if option == "2":
       print "you selected 2"
       print_list_of_websites()
-
 
 main()
 
